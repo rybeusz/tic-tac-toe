@@ -16,13 +16,9 @@ public class Board {
     }
     
     public void init() {
-        int[] values = {4,3,8,9,5,1,2,7,6};
-        int k = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                cells[k]= new Cell(i, j, values[k]);
-                k += 1;
-            }
+        Integer[] values = {4,3,8,9,5,1,2,7,6};
+        for (int k = 0; k < 9; k++) {
+            cells[k]= new Cell(k, values[k]);
         }
     }
 
@@ -39,8 +35,10 @@ public class Board {
         return true;
     }
 
-    public boolean hasWon(Seed seed, int row, int col) {
+    public boolean hasWon(Seed seed, Integer position) throws IllegalArgumentException {
+        getCells()[position].setContent(seed);
 
+        //get list with all player cells
         ArrayList<Integer> player = new ArrayList<>();
         for (Cell cell : getCells()) {
             if (cell.getContent().equals(seed)) {
@@ -48,6 +46,7 @@ public class Board {
             }
         }
 
+        //check if any triplet equals 15
         for (int i=0; i<player.size(); i++) {
             for (int j = i + 1; j<player.size(); j++) {
                 for (int k = j + 1; k < player.size(); k++) {
@@ -58,4 +57,5 @@ public class Board {
         }
         return false;
     }
+
 }

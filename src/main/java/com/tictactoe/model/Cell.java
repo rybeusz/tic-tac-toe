@@ -7,15 +7,13 @@ import com.tictactoe.enums.Seed;
  */
 public class Cell {
     Seed content;
-    int row;
-    int col;
-    int value;
+    Integer position;
+    Integer value;
 
 
-    public Cell(int row, int col, int value) {
+    public Cell(Integer position, Integer value) {
         content = Seed.EMPTY;
-        setRow(row);
-        setCol(col);
+        setPosition(position);
         setValue(value);
     }
 
@@ -23,48 +21,21 @@ public class Cell {
         return content;
     }
 
-    public void setRow(int row) {
-        if (row > 2 || row < 0) {
-            throw new IllegalArgumentException();
-        }
-        this.row = row;
-    }
-
-    public void setCol(int col) {
-        if (col > 2 || col < 0) {
-            throw new IllegalArgumentException();
-        }
-        this.col = col;
-    }
 
     public void clear() {
         this.content = Seed.EMPTY;
     }
 
-    public void setContent(Seed content) {
-        this.content = content;
+    public void setContent(Seed content) throws IllegalArgumentException {
+        if (this.content == Seed.EMPTY) {
+            this.content = content;
+        } else {
+            throw new IllegalArgumentException("Cell already occuped");
+        }
     }
 
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
-    }
 
     public Seed getContent() { return content; }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Cell cell = (Cell) o;
-
-        if (row != cell.row) return false;
-        return col == cell.col;
-    }
 
 
     public void setValue(int value) {
@@ -74,4 +45,21 @@ public class Cell {
     public int getValue() {
         return value;
     }
+
+    public void setPosition(int position) {
+        if (position > 8 || position < 0) throw new IllegalArgumentException();
+        this.position = position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cell cell = (Cell) o;
+
+        if (position != null ? !position.equals(cell.position) : cell.position != null) return false;
+        return value != null ? value.equals(cell.value) : cell.value == null;
+    }
+
 }

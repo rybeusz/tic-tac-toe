@@ -15,10 +15,9 @@ class CellTest {
 
     @BeforeEach
     public void setup() {
-        int row = 1;
-        int col = 1;
+        int position = 4;
         int value = 5;
-        cell = new Cell(row, col, value);
+        cell = new Cell(position, value);
     }
 
     @Test
@@ -27,16 +26,16 @@ class CellTest {
     }
 
     @Test
-    public void testThrowIllegalArgumentExceptionIfCoordinatesLT0() {
+    public void testThrowIllegalArgumentExceptionIfPositionLT0() {
         assertThrows(IllegalArgumentException.class, ()-> {
-           new Cell(-1,2, 0);
+           new Cell(-1, null);
         });
     }
 
     @Test
-    public void testThrowIllegalArgumentExceptionIfCoordinatesHT2() {
+    public void testThrowIllegalArgumentExceptionIfPositionHT8() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Cell(0,4, 0);
+            new Cell(10, null);
         });
     }
 
