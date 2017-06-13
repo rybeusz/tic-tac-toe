@@ -28,6 +28,20 @@ public class Gui {
         }
     }
 
+    public void showQuestion() {
+        System.out.println( "|1|2|3|\n" +
+                            "|4|5|6|\n" +
+                            "|7|8|9|");
+        System.out.println("Choose cell which you want mark by typing it number: ");
+    }
+
+    public void showEndGame(GameState winner) {
+        System.out.println(String.format("The winner is: %s", winner));
+    }
+
+    public void showStatus(GameState currentState) {
+        System.out.println(String.format("Game status: %s", currentState));
+    }
 
     public static void main(String[] args) {
         Gui gui = new Gui();
@@ -43,14 +57,7 @@ public class Gui {
         seeds.add(Seed.CROSS);
         seeds.add(Seed.EMPTY);
         gui.showBoard(seeds);
-    }
-
-    public void showQuestion() {
-    }
-
-    public void showEndGame() {
-    }
-
-    public void showStatus(GameState currentState) {
+        gui.showStatus(GameState.PLAYING);
+        gui.showQuestion();
     }
 }
