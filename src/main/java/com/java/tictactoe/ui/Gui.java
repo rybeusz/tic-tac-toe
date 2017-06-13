@@ -24,4 +24,7 @@ public class Gui {
         Gui gui = new Gui();
         gui.showStartMessage(Seed.CROSS);
     }
+
+    public void showBoard(ArrayList<Seed> seeds) {
+    }
 }

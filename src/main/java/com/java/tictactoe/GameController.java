@@ -24,8 +24,12 @@ public class GameController {
         GameController gc = new GameController();
         gc.startGame();
         while(gc.game.getCurrentState() == GameState.PLAYING) {
-
+            gc.playTurn();
         }
+    }
+
+    private void playTurn() {
+        gui.showBoard(game.getBoard().getSeeds());
     }
 
     private void startGame() {
