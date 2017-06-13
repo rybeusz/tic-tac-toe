@@ -2,13 +2,13 @@ package com.tictactoe.model;
 
 import com.tictactoe.enums.Seed;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
  * Created by rybeusz on 12.06.17.
  */
 public class Board {
+
     private Cell[] cells;
 
     public Board() {
