@@ -1,6 +1,6 @@
-package com.tictactoe.model;
+package com.java.tictactoe.facade.model;
 
-import com.tictactoe.enums.Seed;
+import com.java.tictactoe.enums.Seed;
 
 import java.util.ArrayList;
 

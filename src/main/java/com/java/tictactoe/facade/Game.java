@@ -1,10 +1,9 @@
-package com.tictactoe.facade;
+package com.java.tictactoe.facade;
 
-import com.tictactoe.enums.GameState;
-import com.tictactoe.enums.Seed;
-import com.tictactoe.model.Board;
+import com.java.tictactoe.enums.GameState;
+import com.java.tictactoe.enums.Seed;
+import com.java.tictactoe.facade.model.Board;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {

@@ -1,7 +1,8 @@
-package com.tictactoe.facade;
+package com.java.tictactoe.facade.facade;
 
-import com.tictactoe.enums.GameState;
-import com.tictactoe.enums.Seed;
+import com.java.tictactoe.facade.Game;
+import com.java.tictactoe.enums.GameState;
+import com.java.tictactoe.enums.Seed;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -67,6 +68,7 @@ class GameTest {
         game.getBoard().getCells()[5].setContent(Seed.NOUGHT);
         game.getBoard().getCells()[6].setContent(Seed.NOUGHT);
         game.getBoard().getCells()[7].setContent(Seed.CROSS);
+        game.setCurrentPlayer(Seed.NOUGHT);
         game.updateGameState(Seed.NOUGHT, 8);
         assertEquals(GameState.DRAW, game.getCurrentState());
     }
