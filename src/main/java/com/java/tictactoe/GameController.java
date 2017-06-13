@@ -14,27 +14,35 @@ public class GameController {
     private Gui gui;
     private UserInput userInput;
 
-    public GameController() {
-        game = new Game();
-        gui = new Gui();
-        userInput = new UserInput();
-    }
-
     static void run() {
         GameController gc = new GameController();
         gc.startGame();
         while(gc.game.getCurrentState() == GameState.PLAYING) {
             gc.playTurn();
         }
+        gc.endGame();
+    }
+
+    public GameController() {
+        game = new Game();
+        gui = new Gui();
+        userInput = new UserInput();
     }
 
     private void playTurn() {
         gui.showBoard(game.getBoard().getSeeds());
+        gui.showQuestion();
+        game.updateGameState(game.getCurrentPlayer(), userInput.chooseCell());
+        gui.showStatus(game.getCurrentState());
     }
 
     private void startGame() {
         game.init();
         gui.showStartMessage(game.getCurrentPlayer());
+    }
+
+    private void endGame() {
+        gui.showEndGame();
     }
 
 }
