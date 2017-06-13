@@ -42,7 +42,10 @@ public class GameController {
     }
 
     private void endGame() {
-        gui.showEndGame();
+        gui.showEndGame(game.getCurrentState());
     }
 
+    public static void main(String[] args) {
+        GameController.run();
+    }
 }
