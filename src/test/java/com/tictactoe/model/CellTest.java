@@ -17,7 +17,8 @@ class CellTest {
     public void setup() {
         int row = 1;
         int col = 1;
-        cell = new Cell(1,1);
+        int value = 5;
+        cell = new Cell(row, col, value);
     }
 
     @Test
@@ -28,14 +29,14 @@ class CellTest {
     @Test
     public void testThrowIllegalArgumentExceptionIfCoordinatesLT0() {
         assertThrows(IllegalArgumentException.class, ()-> {
-           new Cell(-1,2);
+           new Cell(-1,2, 0);
         });
     }
 
     @Test
     public void testThrowIllegalArgumentExceptionIfCoordinatesHT2() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Cell(0,4);
+            new Cell(0,4, 0);
         });
     }
 

@@ -9,12 +9,14 @@ public class Cell {
     Seed content;
     int row;
     int col;
-    private Object cell;
+    int value;
 
-    public Cell(int row, int col) {
+
+    public Cell(int row, int col, int value) {
         content = Seed.EMPTY;
         setRow(row);
         setCol(col);
+        setValue(value);
     }
 
     public Seed getSeed() {
@@ -51,15 +53,25 @@ public class Cell {
         return col;
     }
 
+    public Seed getContent() { return content; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Cell cell1 = (Cell) o;
+        Cell cell = (Cell) o;
 
-        if (row != cell1.row) return false;
-        if (col != cell1.col) return false;
-        return cell != null ? cell.equals(cell1.cell) : cell1.cell == null;
+        if (row != cell.row) return false;
+        return col == cell.col;
+    }
+
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
     }
 }
