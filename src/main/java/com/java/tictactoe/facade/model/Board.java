@@ -58,4 +58,11 @@ public class Board {
         return false;
     }
 
+    public ArrayList<Seed> getSeeds() {
+        ArrayList<Seed> seeds = new ArrayList<>();
+        for (Seed seed : getSeeds()) {
+            seeds.add(seed);
+        }
+        return seeds;
+    }
 }
