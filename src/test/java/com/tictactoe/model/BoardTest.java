@@ -19,21 +19,15 @@ class BoardTest {
 
     @Test
     public void testBoardCreatesBoardWith3Rows() {
-        assertEquals(3, board.getCells().length);
+        assertEquals(9, board.getCells().length);
     }
 
-    @Test
-    public void testBoardCreateBoardRowsWith3Cells() {
-        assertEquals(3, board.getCells()[0].length);
-        assertEquals(3, board.getCells()[1].length);
-        assertEquals(3, board.getCells()[2].length);
-    }
 
     @Test
     public void testInitFillsCellsWithCorrectCoordinates() {
         Cell cell = new Cell(2,2);
         board.init();
-        assertTrue(cell.equals(board.getCells()[2][2]));
+        assertTrue(cell.equals(board.getCells()[8]));
     }
 
 }
