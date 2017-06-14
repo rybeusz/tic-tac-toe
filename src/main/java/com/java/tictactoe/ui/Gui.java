@@ -15,12 +15,12 @@ public class Gui {
     }
 
     public void showBoard(ArrayList<Seed> seeds) {
-        int seedCount = 1;
+        Integer seedCount = 1;
         String seedValue;
         for (Seed seed : seeds) {
             if (seed.equals(Seed.CROSS)) seedValue = "X";
             else if (seed.equals(Seed.NOUGHT)) seedValue = "O";
-            else seedValue = " ";
+            else seedValue = seedCount.toString();
 
             System.out.print(String.format("|%s", seedValue));
             if (seedCount == 3 || seedCount == 6 || seedCount == 9) System.out.print("|\n");
@@ -29,9 +29,9 @@ public class Gui {
     }
 
     public void showQuestion() {
-        System.out.println( "|1|2|3|\n" +
-                            "|4|5|6|\n" +
-                            "|7|8|9|");
+//        System.out.println( "|1|2|3|\n" +
+//                            "|4|5|6|\n" +
+//                            "|7|8|9|");
         System.out.println("Choose cell which you want mark by typing it number: ");
     }
 

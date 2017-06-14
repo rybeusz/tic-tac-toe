@@ -14,25 +14,24 @@ public class GameController {
     private Gui gui;
     private UserInput userInput;
 
-    static void run() {
-        GameController gc = new GameController();
-        gc.startGame();
-        while(gc.game.getCurrentState() == GameState.PLAYING) {
-            gc.playTurn();
-        }
-        gc.endGame();
-    }
-
     public GameController() {
         game = new Game();
         gui = new Gui();
         userInput = new UserInput();
     }
 
+    public void run() {
+        startGame();
+        while(game.getCurrentState() == GameState.PLAYING) {
+            playTurn();
+        }
+        endGame();
+    }
+
     private void playTurn() {
         gui.showBoard(game.getBoard().getSeeds());
         gui.showQuestion();
-        game.updateGameState(game.getCurrentPlayer(), userInput.chooseCell());
+        game.updateGameState(game.getCurrentPlayer(), userInput.chooseCell()-1);
         gui.showStatus(game.getCurrentState());
     }
 
@@ -43,9 +42,7 @@ public class GameController {
 
     private void endGame() {
         gui.showEndGame(game.getCurrentState());
+        gui.showBoard(game.getBoard().getSeeds());
     }
 
-    public static void main(String[] args) {
-        GameController.run();
-    }
 }

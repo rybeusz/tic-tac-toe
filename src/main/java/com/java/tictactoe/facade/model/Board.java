@@ -60,8 +60,8 @@ public class Board {
 
     public ArrayList<Seed> getSeeds() {
         ArrayList<Seed> seeds = new ArrayList<>();
-        for (Seed seed : getSeeds()) {
-            seeds.add(seed);
+        for (Cell cell : getCells()) {
+            seeds.add(cell.getSeed());
         }
         return seeds;
     }
