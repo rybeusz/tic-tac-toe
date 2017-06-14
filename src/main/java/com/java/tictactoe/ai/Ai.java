@@ -4,13 +4,14 @@ package com.java.tictactoe.ai;
 import com.java.tictactoe.enums.Seed;
 import com.java.tictactoe.facade.model.Board;
 import com.java.tictactoe.facade.model.Cell;
+import com.java.tictactoe.interfaces.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
-public class Ai {
+public class Ai implements Player {
 
+    private Seed aiSeed;
     private Board board;
     private Integer countMove;
     private Integer[] VALUES = {4,3,8,9,5,1,2,7,6};
@@ -18,7 +19,7 @@ public class Ai {
     ArrayList<Integer> emptyCell;
     ArrayList<Integer> userMoves;
 
-    public void init(Board board) {
+    public void init(Board board, Seed aiSeed) {
         setBoard(board);
         countMove = 0;
         marvinMoves = new ArrayList<Integer>();
@@ -26,12 +27,18 @@ public class Ai {
         userMoves = new ArrayList<Integer>();
     }
 
-    public Integer move() {
+    @Override
+    public Integer getMove() {
         if (isWinning() > -1) return isWinning();
         if (isBlocking() > -1) return isBlocking();
         if (makeFork() > -1) return makeFork();
         return -1;
         }
+
+    @Override
+    public Seed getPlayerSeed() {
+        return aiSeed;
+    }
 
     public Integer makeFork() {
         return -1;

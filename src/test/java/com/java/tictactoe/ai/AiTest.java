@@ -35,7 +35,7 @@ class AiTest {
         board.getCells()[6].setContent(Seed.NOUGHT);
         board.getCells()[7].setContent(Seed.CROSS);
         board.getCells()[8].setContent(Seed.NOUGHT);
-        robot.init(board);
+        robot.init(board, Seed.NOUGHT);
         assertEquals(winningPosition, robot.isWinning());
     }
 
@@ -55,7 +55,7 @@ class AiTest {
         board.getCells()[6].setContent(Seed.NOUGHT);
         board.getCells()[7].setContent(Seed.CROSS);
         board.getCells()[8].setContent(Seed.NOUGHT);
-        robot.init(board);
+        robot.init(board, Seed.NOUGHT);
         assertEquals(blockingPosition, robot.isBlocking());
     }
 
@@ -75,7 +75,7 @@ class AiTest {
         board.getCells()[6].setContent(Seed.NOUGHT);
         board.getCells()[7].setContent(Seed.CROSS);
         board.getCells()[8].setContent(Seed.NOUGHT);
-        robot.init(board);
+        robot.init(board, Seed.NOUGHT);
         assertEquals(blockingPosition, robot.isBlocking());
     }
 

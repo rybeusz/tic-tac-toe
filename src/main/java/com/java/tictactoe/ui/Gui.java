@@ -12,7 +12,7 @@ public class Gui {
     }
 
     public void showBoard(ArrayList<Seed> seeds) {
-        Integer seedCount = 1;
+        Integer seedCount = 0;
         String seedValue;
         for (Seed seed : seeds) {
             if (seed.equals(Seed.CROSS)) seedValue = "X";
@@ -20,7 +20,7 @@ public class Gui {
             else seedValue = seedCount.toString();
 
             System.out.print(String.format("|%s", seedValue));
-            if (seedCount == 3 || seedCount == 6 || seedCount == 9) System.out.print("|\n");
+            if (seedCount == 2 || seedCount == 5 || seedCount == 8) System.out.print("|\n");
             seedCount++;
         }
     }
@@ -35,6 +35,14 @@ public class Gui {
 
     public void showStatus(GameState currentState) {
         System.out.println(String.format("Game status: %s", currentState));
+    }
+
+    public void showMenu() {
+        System.out.println(
+                "Welcome in Tic-Tac-Toe\n" +
+                "1. Player VS Player\n" +
+                "2. Player VS AI Marvin\n"
+        );
     }
 
 }

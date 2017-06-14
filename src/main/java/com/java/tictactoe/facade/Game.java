@@ -41,21 +41,14 @@ public class Game {
         return currentState;
     }
 
-    public void updateGameState(Seed seed, Integer position) {
-        if (!getCurrentPlayer().equals(seed)) throw new IllegalArgumentException("Bad player");
-
+    public void updateGameState(Integer position) {
         try {
-            if (board.hasWon(seed, position)) {
-                if (seed == Seed.CROSS) currentState = GameState.CROSS_WON;
-                if (seed == Seed.NOUGHT) currentState = GameState.NOUGHT_WON;
+            if (board.hasWon(currentPlayer, position)) {
+                currentState = currentPlayer.equals(Seed.CROSS) ? GameState.CROSS_WON : GameState.NOUGHT_WON;
             } else if (board.isDraw()) {
                 setGameState(GameState.DRAW);
             } else {
-                if (currentPlayer == Seed.CROSS) {
-                    currentPlayer = Seed.NOUGHT;
-                } else {
-                    currentPlayer = Seed.CROSS;
-                }
+                currentPlayer = currentPlayer.equals(Seed.CROSS) ? Seed.NOUGHT : Seed.CROSS;
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

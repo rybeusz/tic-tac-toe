@@ -4,6 +4,8 @@ import com.java.tictactoe.ai.Ai;
 import com.java.tictactoe.enums.GameState;
 import com.java.tictactoe.enums.Seed;
 import com.java.tictactoe.facade.Game;
+import com.java.tictactoe.interfaces.Player;
+import com.java.tictactoe.players.Human;
 import com.java.tictactoe.ui.Gui;
 import com.java.tictactoe.ui.UserInput;
 
@@ -15,13 +17,13 @@ public class GameController {
     private Game game;
     private Gui gui;
     private UserInput userInput;
-    private Ai marvin;
+    private Player firstPlayer;
+    private Player secondPlayer;
 
     public GameController() {
         game = new Game();
         gui = new Gui();
         userInput = new UserInput();
-        marvin = new Ai();
     }
 
     public void run() {
@@ -35,18 +37,21 @@ public class GameController {
     public void playTurn() {
         gui.showBoard(game.getBoard().getSeeds());
         gui.showQuestion();
-        if (game.getCurrentPlayer() == Seed.NOUGHT) {
-            Integer position = marvin.move();
-            game.updateGameState(game.getCurrentPlayer(), position);
-        } else {
-            game.updateGameState(game.getCurrentPlayer(), userInput.chooseCell() - 1);
-        }
+        Seed currentPlayerSeed = game.getCurrentPlayer();
+        Integer position = currentPlayerSeed.equals(firstPlayer.getPlayerSeed()) ? firstPlayer.getMove() : secondPlayer.getMove();
+        game.updateGameState(position);
         gui.showStatus(game.getCurrentState());
     }
 
     private void startGame() {
         game.init();
-        marvin.init(game.getBoard());
+        gui.showMenu();
+        Integer userChoose = userInput.chooseOption();
+        if (userChoose == 1) {
+            setPlayerVsPlayerPlayers();
+        } else if (userChoose == 2) {
+            setPlayerVersusAiPlayers();
+        }
         gui.showStartMessage(game.getCurrentPlayer());
     }
 
@@ -55,4 +60,16 @@ public class GameController {
         gui.showBoard(game.getBoard().getSeeds());
     }
 
+    private void setPlayerVsPlayerPlayers() {
+        firstPlayer = new Human(Seed.CROSS, userInput);
+        secondPlayer = new Human(Seed.NOUGHT, userInput);
+    }
+
+    private void setPlayerVersusAiPlayers() {
+        //Human is always CROSS, AI always NOUGHT
+        Ai marvin = new Ai();
+        marvin.init(game.getBoard(), Seed.NOUGHT);
+        firstPlayer = new Human(Seed.CROSS, userInput);
+        secondPlayer = marvin;
+    }
 }

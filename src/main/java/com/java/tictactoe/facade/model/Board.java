@@ -38,7 +38,7 @@ public class Board {
     public boolean hasWon(Seed seed, Integer position) throws IllegalArgumentException {
         getCells()[position].setContent(seed);
 
-        //get list with all player cells
+        //get list with all players cells
         ArrayList<Integer> player = new ArrayList<>();
         for (Cell cell : getCells()) {
             if (cell.getContent().equals(seed)) {

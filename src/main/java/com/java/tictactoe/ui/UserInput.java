@@ -7,7 +7,7 @@ import java.util.Scanner;
  * Created by pati on 13.06.17.
  */
 public class UserInput {
-    public Integer chooseCell() throws InputMismatchException {
+    public Integer chooseOption() throws InputMismatchException {
         Scanner scan = new Scanner(System.in);
         Integer cellNumber = null;
         cellNumber = scan.nextInt();

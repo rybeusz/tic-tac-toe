@@ -28,7 +28,7 @@ class GameTest {
     @Test
     void testChangeCurrentPlayerIfCellIsEmpty() {
         game.setCurrentPlayer(Seed.CROSS);
-        game.updateGameState(Seed.CROSS, 1);
+        game.updateGameState(1);
         assertEquals(Seed.NOUGHT, game.getCurrentPlayer());
     }
 
@@ -36,7 +36,7 @@ class GameTest {
     void testCurrentPlayerIsNotChangeIfCellIsTaken() {
         game.setCurrentPlayer(Seed.CROSS);
         game.getBoard().getCells()[1].setContent(Seed.NOUGHT);
-        game.updateGameState(Seed.CROSS, 1);
+        game.updateGameState(1);
         assertEquals(Seed.CROSS, game.getCurrentPlayer());
     }
 
@@ -45,7 +45,7 @@ class GameTest {
         game.setCurrentPlayer(Seed.CROSS);
         game.getBoard().getCells()[0].setContent(Seed.CROSS);
         game.getBoard().getCells()[1].setContent(Seed.CROSS);
-        game.updateGameState(Seed.CROSS, 2);
+        game.updateGameState(2);
         assertEquals(GameState.CROSS_WON, game.getCurrentState());
     }
 
@@ -54,7 +54,7 @@ class GameTest {
         game.setCurrentPlayer(Seed.NOUGHT);
         game.getBoard().getCells()[0].setContent(Seed.NOUGHT);
         game.getBoard().getCells()[1].setContent(Seed.NOUGHT);
-        game.updateGameState(Seed.NOUGHT, 2);
+        game.updateGameState(2);
         assertEquals(GameState.NOUGHT_WON, game.getCurrentState());
     }
 
@@ -69,7 +69,7 @@ class GameTest {
         game.getBoard().getCells()[6].setContent(Seed.NOUGHT);
         game.getBoard().getCells()[7].setContent(Seed.CROSS);
         game.setCurrentPlayer(Seed.NOUGHT);
-        game.updateGameState(Seed.NOUGHT, 8);
+        game.updateGameState(8);
         assertEquals(GameState.DRAW, game.getCurrentState());
     }
 }
