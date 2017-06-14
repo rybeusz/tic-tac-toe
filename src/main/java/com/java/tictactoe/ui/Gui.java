@@ -5,9 +5,6 @@ import com.java.tictactoe.enums.Seed;
 
 import java.util.ArrayList;
 
-/**
- * Created by pati on 13.06.17.
- */
 public class Gui {
 
     public void showStartMessage(Seed currentPlayer) {
@@ -29,9 +26,6 @@ public class Gui {
     }
 
     public void showQuestion() {
-//        System.out.println( "|1|2|3|\n" +
-//                            "|4|5|6|\n" +
-//                            "|7|8|9|");
         System.out.println("Choose cell which you want mark by typing it number: ");
     }
 
@@ -43,21 +37,4 @@ public class Gui {
         System.out.println(String.format("Game status: %s", currentState));
     }
 
-    public static void main(String[] args) {
-        Gui gui = new Gui();
-        gui.showStartMessage(Seed.CROSS);
-        ArrayList<Seed> seeds = new ArrayList<>();
-        seeds.add(Seed.CROSS);
-        seeds.add(Seed.EMPTY);
-        seeds.add(Seed.CROSS);
-        seeds.add(Seed.NOUGHT);
-        seeds.add(Seed.NOUGHT);
-        seeds.add(Seed.EMPTY);
-        seeds.add(Seed.CROSS);
-        seeds.add(Seed.CROSS);
-        seeds.add(Seed.EMPTY);
-        gui.showBoard(seeds);
-        gui.showStatus(GameState.PLAYING);
-        gui.showQuestion();
-    }
 }
