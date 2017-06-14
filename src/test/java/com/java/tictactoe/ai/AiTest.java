@@ -42,15 +42,15 @@ class AiTest {
     @Test
     public void testMarvinBloksPlayerWinningMove() {
         board.init();
-        Integer blockingPosition = 2;
+        Integer blockingPosition = 1;
         // |X| | |
-        // |X| |O|
+        // |X|X|O|
         // |O|X|O|
         board.getCells()[0].setContent(Seed.CROSS);
         board.getCells()[1].setContent(Seed.EMPTY);
         board.getCells()[2].setContent(Seed.EMPTY);
         board.getCells()[3].setContent(Seed.CROSS);
-        board.getCells()[4].setContent(Seed.EMPTY);
+        board.getCells()[4].setContent(Seed.CROSS);
         board.getCells()[5].setContent(Seed.NOUGHT);
         board.getCells()[6].setContent(Seed.NOUGHT);
         board.getCells()[7].setContent(Seed.CROSS);

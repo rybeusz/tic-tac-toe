@@ -14,45 +14,37 @@ public class Ai {
     private Board board;
     private Integer countMove;
     private Integer[] VALUES = {4,3,8,9,5,1,2,7,6};
+    ArrayList<Integer> marvinMoves;
+    ArrayList<Integer> emptyCell;
+    ArrayList<Integer> userMoves;
 
     public void init(Board board) {
         setBoard(board);
         countMove = 0;
+        marvinMoves = new ArrayList<Integer>();
+        emptyCell = new ArrayList<Integer>();
+        userMoves = new ArrayList<Integer>();
     }
 
     public Integer move() {
         if (isWinning() > -1) return isWinning();
+        if (isBlocking() > -1) return isBlocking();
+        if (makeFork() > -1) return makeFork();
         return -1;
         }
 
-    public Integer isWinning() {
-        ArrayList<Integer> marvinMoves = new ArrayList<Integer>();
-        ArrayList<Integer> emptyCell = new ArrayList<Integer>();
-        for (Cell cell : board.getCells()) {
-            if (cell.getContent().equals(Seed.NOUGHT)) {
-                marvinMoves.add(cell.getValue());
-            } else if (cell.getContent().equals(Seed.EMPTY)) {
-                emptyCell.add(cell.getValue());
-            }
-        }
+    public Integer makeFork() {
+        return -1;
+    }
 
+    public Integer isWinning() {
+        recountBoards();
         return findFifteen(marvinMoves, emptyCell);
     }
 
     public Integer isBlocking() {
-        ArrayList<Integer> userMoves = new ArrayList<Integer>();
-        ArrayList<Integer> emptyCell = new ArrayList<Integer>();
-        for (Cell cell : board.getCells()) {
-            if (cell.getContent().equals(Seed.CROSS)) {
-                userMoves.add(cell.getValue());
-            } else if (cell.getContent().equals(Seed.EMPTY)) {
-                emptyCell.add(cell.getValue());
-            }
-        }
-
-
+        recountBoards();
         return findFifteen(userMoves, emptyCell);
-
     }
 
     private Integer findFifteen(ArrayList<Integer> playerMoves, ArrayList<Integer> emptyCells) {
@@ -68,9 +60,20 @@ public class Ai {
         return -1;
     }
 
-
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    private void recountBoards() {
+        for (Cell cell : board.getCells()) {
+            if (cell.getContent().equals(Seed.NOUGHT)) {
+                marvinMoves.add(cell.getValue());
+            } else if (cell.getContent().equals(Seed.EMPTY)) {
+                emptyCell.add(cell.getValue());
+            } else {
+                userMoves.add(cell.getValue());
+            }
+        }
     }
 
 }
