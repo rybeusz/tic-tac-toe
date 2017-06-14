@@ -7,6 +7,7 @@ import com.java.tictactoe.facade.model.Cell;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Ai {
@@ -30,6 +31,7 @@ public class Ai {
         if (isWinning() > -1) return isWinning();
         if (isBlocking() > -1) return isBlocking();
         if (makeFork() > -1) return makeFork();
+        if (isForking() > -1) return isForking();
         return -1;
         }
 
@@ -75,5 +77,45 @@ public class Ai {
             }
         }
     }
+
+    public Integer isForking() {
+        recountBoards();
+        return findFork(marvinMoves, emptyCell);
+    }
+
+    public Integer isBlockingFork() {
+        recountBoards();
+        return findFork(userMoves, emptyCell);
+    }
+
+    private Integer findFork(ArrayList<Integer> playerMoves, ArrayList<Integer> emptyCells) {
+        HashMap<Integer, Integer> cellsUse = new HashMap<Integer, Integer>();
+        Integer won;
+        for (Integer value : VALUES) {
+            cellsUse.put(value, 0);
+        }
+
+        for (int i=0; i<playerMoves.size(); i++) {
+            for (int j = 0; j<emptyCells.size(); j++) {
+                for (int k = j + 1; k < emptyCells.size(); k++) {
+                    won = playerMoves.get(i) + emptyCells.get(j) + emptyCells.get(k);
+                    if (won == 15) {
+                        cellsUse.put(emptyCells.get(j), cellsUse.get(emptyCells.get(j)) + 1);
+                        cellsUse.put(emptyCells.get(k), cellsUse.get(emptyCells.get(k)) + 1);
+                    }
+                }
+            }
+        }
+
+        for (Integer value : VALUES) {
+            System.out.println(value);
+            System.out.println(cellsUse.get(value));
+            if (cellsUse.get(value).equals(2)) {
+                return Arrays.asList(VALUES).indexOf(value);
+            }
+        }
+        return -1;
+    }
+
 
 }

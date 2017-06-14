@@ -79,6 +79,45 @@ class AiTest {
         assertEquals(blockingPosition, robot.isBlocking());
     }
 
+    @Test
+    public void testIsAiForkingItsMove() {
+        board.init();
+        Integer forkingPosition = 2;
+        // |0|X|+|
+        // | |X| |
+        // |x| |0|
+        board.getCells()[0].setContent(Seed.NOUGHT);
+        board.getCells()[1].setContent(Seed.CROSS);
+        board.getCells()[2].setContent(Seed.EMPTY);
+        board.getCells()[3].setContent(Seed.EMPTY);
+        board.getCells()[4].setContent(Seed.CROSS);
+        board.getCells()[5].setContent(Seed.EMPTY);
+        board.getCells()[6].setContent(Seed.CROSS);
+        board.getCells()[7].setContent(Seed.EMPTY);
+        board.getCells()[8].setContent(Seed.NOUGHT);
+        robot.init(board);
+        assertEquals(forkingPosition, robot.isForking());
+    }
+
+    @Test
+    public void testIsAiBlokingOponnentForkMove() {
+        board.init();
+        Integer forkingPosition = 0;
+        // |+|X| |
+        // |X|0|0|
+        // | | |X|
+        board.getCells()[0].setContent(Seed.EMPTY);
+        board.getCells()[1].setContent(Seed.CROSS);
+        board.getCells()[2].setContent(Seed.EMPTY);
+        board.getCells()[3].setContent(Seed.CROSS);
+        board.getCells()[4].setContent(Seed.NOUGHT);
+        board.getCells()[5].setContent(Seed.NOUGHT);
+        board.getCells()[6].setContent(Seed.EMPTY);
+        board.getCells()[7].setContent(Seed.EMPTY);
+        board.getCells()[8].setContent(Seed.CROSS);
+        robot.init(board);
+        assertEquals(forkingPosition, robot.isBlockingFork());
+    }
 
 
 }
