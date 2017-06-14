@@ -83,11 +83,11 @@ class AiTest {
     public void testIsAiForkingItsMove() {
         board.init();
         Integer forkingPosition = 2;
-        // |0|X|+|
+        // |0| |+|
         // | |X| |
         // |x| |0|
         board.getCells()[0].setContent(Seed.NOUGHT);
-        board.getCells()[1].setContent(Seed.CROSS);
+        board.getCells()[1].setContent(Seed.EMPTY);
         board.getCells()[2].setContent(Seed.EMPTY);
         board.getCells()[3].setContent(Seed.EMPTY);
         board.getCells()[4].setContent(Seed.CROSS);

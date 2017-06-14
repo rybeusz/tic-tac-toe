@@ -108,8 +108,6 @@ public class Ai {
         }
 
         for (Integer value : VALUES) {
-            System.out.println(value);
-            System.out.println(cellsUse.get(value));
             if (cellsUse.get(value).equals(2)) {
                 return Arrays.asList(VALUES).indexOf(value);
             }
