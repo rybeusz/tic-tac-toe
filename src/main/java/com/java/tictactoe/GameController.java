@@ -47,6 +47,9 @@ public class GameController {
             } else if (userChoose == 2) {
                 userInputIsCorrect = true;
                 setPlayerVersusAiPlayers();
+            } else if (userChoose == 3) {
+                userInputIsCorrect = true;
+                setAiVersusAiPlayers();
             } else {
                 gui.showError("Bad input");
             }
@@ -79,6 +82,15 @@ public class GameController {
         Ai marvin = new Ai();
         marvin.init(game.getBoard(), Seed.NOUGHT);
         firstPlayer = new Human(Seed.CROSS, userInput);
+        secondPlayer = marvin;
+    }
+
+    private void setAiVersusAiPlayers() {
+        Ai rufus = new Ai();
+        Ai marvin = new Ai();
+        rufus.init(game.getBoard(), Seed.CROSS);
+        marvin.init(game.getBoard(), Seed.NOUGHT);
+        firstPlayer = rufus;
         secondPlayer = marvin;
     }
 }
