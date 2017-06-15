@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
+
     private Board board;
     private GameState currentState;
     private Seed currentPlayer;
@@ -27,7 +28,6 @@ public class Game {
         if ( n == 1 ) { return Seed.NOUGHT;}
         return Seed.CROSS;
     }
-
 
     public void updateGameState(Integer position) {
         try {

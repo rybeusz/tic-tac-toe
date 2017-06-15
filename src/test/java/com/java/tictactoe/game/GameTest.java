@@ -15,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Created by rybeusz on 13.06.17.
  */
 class GameTest {
-    Game game;
+
+    private Game game;
 
     @BeforeEach
     void setup() {

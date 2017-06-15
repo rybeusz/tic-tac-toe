@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Created by rybeusz on 15.06.17.
  */
 class HumanTest {
+
     @Test
     void testIsPlayerSeedGoodAfterInitialization() {
         Player human = new Human(Seed.CROSS, null);

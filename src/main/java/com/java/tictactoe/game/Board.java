@@ -9,6 +9,7 @@ import java.util.List;
  * Created by rybeusz on 12.06.17.
  */
 public class Board {
+
     private Cell[] cells;
 
     public Board() {

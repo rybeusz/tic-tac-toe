@@ -59,7 +59,7 @@ public class GameController {
         gui.showBoard(game.getBoardSeeds());
     }
 
-    public void playTurn() {
+    private void playTurn() {
         Seed currentPlayerSeed = game.getCurrentPlayer();
         gui.showCurrentPlayer(currentPlayerSeed);
         gui.showBoard(game.getBoardSeeds());

@@ -7,6 +7,7 @@ import java.util.Scanner;
  * Created by pati on 13.06.17.
  */
 public class UserInput {
+
     public Integer chooseOption() throws InputMismatchException {
         Integer userOption;
         try {

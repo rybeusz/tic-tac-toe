@@ -10,13 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class CellTest {
 
-    Cell cell;
-    int position;
-    int value;
-
+    private Cell cell;
+    private int position;
+    private int value;
 
     @Test
-    public void testIsContentEmptyInNewCell() {
+    void testIsContentEmptyInNewCell() {
         position = 1;
         value = 1;
         cell = new Cell(position, value);
@@ -24,7 +23,7 @@ class CellTest {
     }
 
     @Test
-    public void testThrowIllegalArgumentExceptionIfPositionLT0() {
+    void testThrowIllegalArgumentExceptionIfPositionLT0() {
         position = -1;
         value = 1;
         assertThrows(IllegalArgumentException.class, () -> {
@@ -33,7 +32,7 @@ class CellTest {
     }
 
     @Test
-    public void testThrowIllegalArgumentExceptionIfPositionHT8() {
+    void testThrowIllegalArgumentExceptionIfPositionHT8() {
         position = 10;
         value = 1;
         assertThrows(IllegalArgumentException.class, () -> {
@@ -42,7 +41,7 @@ class CellTest {
     }
 
     @Test
-    public void testClearCell() {
+    void testClearCell() {
         position = 1;
         value = 1;
         cell = new Cell(position, value);

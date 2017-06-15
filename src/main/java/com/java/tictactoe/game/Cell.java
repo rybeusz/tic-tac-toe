@@ -6,6 +6,7 @@ import com.java.tictactoe.enums.Seed;
  * Created by rybeusz on 12.06.17.
  */
 public class Cell {
+
     private Seed content;
     private Integer position;
     private Integer value;

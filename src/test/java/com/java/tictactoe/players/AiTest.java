@@ -8,24 +8,26 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AiTest {
-    private Ai robot;
 
+    private Ai robot;
     private Board board;
+
     @BeforeEach
-    public void setup() {
+    void setup() {
         robot = new Ai();
         board = new Board();
         board.init();
     }
 
-    @Test void testIsAiSeedCorrectAfterInit() {
+    @Test
+    void testIsAiSeedCorrectAfterInit() {
         Seed robotSeed = Seed.NOUGHT;
         robot.init(board, robotSeed);
         assertEquals(robotSeed, robot.getPlayerSeed());
     }
 
     @Test
-    public void testMarvinMakesWinningMove() {
+    void testMarvinMakesWinningMove() {
         Integer winningPosition = 2;
         // |X| | |
         // |X|X|O|
@@ -44,7 +46,7 @@ class AiTest {
     }
 
     @Test
-    public void testMarvinBloksPlayerWinningMove() {
+    void testMarvinBloksPlayerWinningMove() {
         Integer blockingPosition = 1;
         // |X| | |
         // |X|X| |
@@ -63,7 +65,7 @@ class AiTest {
     }
 
     @Test
-    public void testMarvinBlocsPlayerWinningMoveInRow() {
+    void testMarvinBlocsPlayerWinningMoveInRow() {
         Integer blockingPosition = 2;
         // |X|X| |
         // | | | |
@@ -75,7 +77,7 @@ class AiTest {
     }
 
     @Test
-    public void testMarvinBlocsPlayerWinningMove2() {
+    void testMarvinBlocsPlayerWinningMove2() {
         Integer blockingPosition = 4;
         // |0| | |
         // |X| |X|
@@ -94,7 +96,7 @@ class AiTest {
     }
 
     @Test
-    public void testIsAiForkingItsMove() {
+    void testIsAiForkingItsMove() {
         Integer forkingPosition = 2;
         // |0| |+|
         // | |X| |
@@ -113,7 +115,7 @@ class AiTest {
     }
 
     @Test
-    public void testIsAiBlokingOponnentForkMove() {
+    void testIsAiBlokingOponnentForkMove() {
         Integer forkingPosition = 0;
         // |+|X| |
         // |X|0|0|

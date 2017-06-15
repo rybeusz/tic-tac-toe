@@ -13,21 +13,21 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class BoardTest {
 
-    Board board;
+    private Board board;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         board = new Board();
     }
 
     @Test
-    public void testBoardCreates9BoardLength() {
+    void testBoardCreates9BoardLength() {
         assertEquals(9, board.getCells().length);
     }
 
 
     @Test
-    public void testInitFillsCellsWithCorrectCoordinates() {
+    void testInitFillsCellsWithCorrectCoordinates() {
         int positionToCheck = 8;
         int value = 6;
         Cell cell = new Cell(positionToCheck, value);
@@ -36,7 +36,7 @@ class BoardTest {
     }
 
     @Test
-    public void testIsDrawIfNoEmptyCells() {
+    void testIsDrawIfNoEmptyCells() {
         board.init();
         for (Cell cell : board.getCells()) {
             cell.setContent(Seed.CROSS);
@@ -45,7 +45,7 @@ class BoardTest {
     }
 
     @Test
-    public void testIsDrawIfSomeEmptyCells() {
+    void testIsDrawIfSomeEmptyCells() {
         board.init();
         for (Cell cell : board.getCells()) {
             cell.setContent(Seed.CROSS);
@@ -55,7 +55,7 @@ class BoardTest {
     }
 
     @Test
-    public void testIf3CrossesInRowWin() {
+    void testIf3CrossesInRowWin() {
         // |X|X|X|
         // | | | |
         // | | | |
@@ -66,7 +66,7 @@ class BoardTest {
     }
 
     @Test
-    public void testIf3NoughtInRowWin() {
+    void testIf3NoughtInRowWin() {
         // |O|O|O|
         // | | | |
         // | | | |
@@ -77,7 +77,7 @@ class BoardTest {
     }
 
     @Test
-    public void testIf3CrossesInCrossWin() {
+    void testIf3CrossesInCrossWin() {
         // |X| | |
         // | |X| |
         // | | |X|
@@ -88,7 +88,7 @@ class BoardTest {
     }
 
     @Test
-    public void testIf3NoughtInCrossWin() {
+    void testIf3NoughtInCrossWin() {
         // |O| | |
         // | |O| |
         // | | |O|
@@ -99,7 +99,7 @@ class BoardTest {
     }
 
     @Test
-    public void testPlayerChooseUsedCellThrowsException() {
+    void testPlayerChooseUsedCellThrowsException() {
         board.init();
         board.getCells()[0].setContent(Seed.NOUGHT);
         board.getCells()[1].setContent(Seed.NOUGHT);
@@ -110,7 +110,7 @@ class BoardTest {
     }
 
     @Test
-    public void testFullBoardWithCrossWinner() {
+    void testFullBoardWithCrossWinner() {
         // |X|X|O|
         // |O|X|O|
         // |O|X|X|
@@ -127,7 +127,7 @@ class BoardTest {
     }
 
     @Test
-    public void testFullBoardWithoutWinner() {
+    void testFullBoardWithoutWinner() {
         // |X|O|X|
         // |X|O|O|
         // |O|X|O|

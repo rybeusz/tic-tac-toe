@@ -7,6 +7,7 @@ import com.java.tictactoe.ui.UserInput;
  * Created by rybeusz on 14.06.17.
  */
 public class Human implements Player {
+
     private UserInput userInput;
     private Seed playerSeed;
 
