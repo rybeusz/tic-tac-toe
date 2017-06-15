@@ -1,4 +1,4 @@
-package com.java.tictactoe.interfaces;
+package com.java.tictactoe.players;
 
 import com.java.tictactoe.enums.Seed;
 

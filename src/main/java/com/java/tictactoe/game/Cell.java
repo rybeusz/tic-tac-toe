@@ -1,4 +1,4 @@
-package com.java.tictactoe.facade.model;
+package com.java.tictactoe.game;
 
 import com.java.tictactoe.enums.Seed;
 
@@ -6,29 +6,14 @@ import com.java.tictactoe.enums.Seed;
  * Created by rybeusz on 12.06.17.
  */
 public class Cell {
-    Seed content;
-    Integer position;
-    Integer value;
+    private Seed content;
+    private Integer position;
+    private Integer value;
 
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public Cell(Integer position, Integer value) {
+    Cell(Integer position, Integer value) {
         content = Seed.EMPTY;
         setPosition(position);
         setValue(value);
-
-    }
-
-    public Seed getSeed() {
-        return content;
-    }
-
-
-    public void clear() {
-        this.content = Seed.EMPTY;
     }
 
     public void setContent(Seed content) throws IllegalArgumentException {
@@ -39,19 +24,25 @@ public class Cell {
         }
     }
 
-
     public Seed getContent() { return content; }
 
-
-    public void setValue(int value) {
-        this.value = value;
+    public void clear() {
+        this.content = Seed.EMPTY;
     }
 
     public int getValue() {
         return value;
     }
 
-    public void setPosition(int position) {
+    private void setValue(int value) {
+        this.value = value;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    private void setPosition(int position) {
         if (position > 8 || position < 0) throw new IllegalArgumentException();
         this.position = position;
     }

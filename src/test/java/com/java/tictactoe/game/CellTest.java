@@ -1,8 +1,6 @@
-package com.java.tictactoe.game.model;
+package com.java.tictactoe.game;
 
 import com.java.tictactoe.enums.Seed;
-import com.java.tictactoe.game.Cell;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,38 +11,44 @@ import static org.junit.jupiter.api.Assertions.*;
 class CellTest {
 
     Cell cell;
+    int position;
+    int value;
 
-    @BeforeEach
-    public void setup() {
-        int position = 4;
-        int value = 5;
-        cell = new Cell(position, value);
-    }
 
     @Test
     public void testIsContentEmptyInNewCell() {
-        assertEquals(Seed.EMPTY, cell.getSeed());
+        position = 1;
+        value = 1;
+        cell = new Cell(position, value);
+        assertEquals(Seed.EMPTY, cell.getContent());
     }
 
     @Test
     public void testThrowIllegalArgumentExceptionIfPositionLT0() {
-        assertThrows(IllegalArgumentException.class, ()-> {
-           new Cell(-1, null);
+        position = -1;
+        value = 1;
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Cell(position, value);
         });
     }
 
     @Test
     public void testThrowIllegalArgumentExceptionIfPositionHT8() {
+        position = 10;
+        value = 1;
         assertThrows(IllegalArgumentException.class, () -> {
-            new Cell(10, null);
+            new Cell(position, value);
         });
     }
 
     @Test
     public void testClearCell() {
+        position = 1;
+        value = 1;
+        cell = new Cell(position, value);
         cell.setContent(Seed.CROSS);
         cell.clear();
-        assertEquals(Seed.EMPTY, cell.getSeed());
+        assertEquals(Seed.EMPTY, cell.getContent());
     }
 
 }

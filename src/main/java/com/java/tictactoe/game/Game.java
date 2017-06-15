@@ -1,9 +1,9 @@
-package com.java.tictactoe.facade;
+package com.java.tictactoe.game;
 
 import com.java.tictactoe.enums.GameState;
 import com.java.tictactoe.enums.Seed;
-import com.java.tictactoe.facade.model.Board;
 
+import java.util.List;
 import java.util.Random;
 
 public class Game {
@@ -29,18 +29,6 @@ public class Game {
     }
 
 
-    public void setGameState(GameState gameState) {
-        this.currentState = gameState;
-    }
-
-    public void setCurrentPlayer(Seed currentPlayer) {
-        this.currentPlayer = currentPlayer;
-    }
-
-    public GameState getCurrentState() {
-        return currentState;
-    }
-
     public void updateGameState(Integer position) {
         try {
             if (board.hasWon(currentPlayer, position)) {
@@ -55,11 +43,27 @@ public class Game {
         }
     }
 
+    public Board getBoard() {
+        return board;
+    }
+
+    public List<Seed> getBoardSeeds() {
+        return board.getBoardSeeds();
+    }
+
+    public void setCurrentPlayer(Seed currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
     public Seed getCurrentPlayer() {
         return currentPlayer;
     }
 
-    public Board getBoard() {
-        return board;
+    public void setGameState(GameState gameState) {
+        this.currentState = gameState;
+    }
+
+    public GameState getCurrentState() {
+        return currentState;
     }
 }

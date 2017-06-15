@@ -8,9 +8,13 @@ import java.util.Scanner;
  */
 public class UserInput {
     public Integer chooseOption() throws InputMismatchException {
-        Scanner scan = new Scanner(System.in);
-        Integer cellNumber = null;
-        cellNumber = scan.nextInt();
-        return cellNumber;
+        Integer userOption;
+        try {
+            Scanner scan = new Scanner(System.in);
+            userOption = scan.nextInt();
+        } catch (InputMismatchException e) {
+            userOption = -1;
+        }
+        return userOption;
     }
 }

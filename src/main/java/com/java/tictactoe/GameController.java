@@ -1,10 +1,10 @@
 package com.java.tictactoe;
 
-import com.java.tictactoe.ai.Ai;
+import com.java.tictactoe.players.Ai;
 import com.java.tictactoe.enums.GameState;
 import com.java.tictactoe.enums.Seed;
-import com.java.tictactoe.facade.Game;
-import com.java.tictactoe.interfaces.Player;
+import com.java.tictactoe.game.Game;
+import com.java.tictactoe.players.Player;
 import com.java.tictactoe.players.Human;
 import com.java.tictactoe.ui.Gui;
 import com.java.tictactoe.ui.UserInput;
@@ -34,30 +34,39 @@ public class GameController {
         endGame();
     }
 
-    public void playTurn() {
-        gui.showBoard(game.getBoard().getSeeds());
-        gui.showQuestion();
-        Seed currentPlayerSeed = game.getCurrentPlayer();
-        Integer position = currentPlayerSeed.equals(firstPlayer.getPlayerSeed()) ? firstPlayer.getMove() : secondPlayer.getMove();
-        game.updateGameState(position);
-        gui.showStatus(game.getCurrentState());
-    }
-
     private void startGame() {
         game.init();
         gui.showMenu();
-        Integer userChoose = userInput.chooseOption();
-        if (userChoose == 1) {
-            setPlayerVsPlayerPlayers();
-        } else if (userChoose == 2) {
-            setPlayerVersusAiPlayers();
+        Integer userChoose;
+        Boolean userInputIsCorrect = false;
+        while (!userInputIsCorrect) {
+            userChoose = userInput.chooseOption();
+            if (userChoose == 1) {
+                userInputIsCorrect = true;
+                setPlayerVsPlayerPlayers();
+            } else if (userChoose == 2) {
+                userInputIsCorrect = true;
+                setPlayerVersusAiPlayers();
+            } else {
+                gui.showError("Bad input");
+            }
         }
-        gui.showStartMessage(game.getCurrentPlayer());
+        gui.showStatus(game.getCurrentState());
     }
 
     private void endGame() {
         gui.showEndGame(game.getCurrentState());
-        gui.showBoard(game.getBoard().getSeeds());
+        gui.showBoard(game.getBoardSeeds());
+    }
+
+    public void playTurn() {
+        Seed currentPlayerSeed = game.getCurrentPlayer();
+        gui.showCurrentPlayer(currentPlayerSeed);
+        gui.showBoard(game.getBoardSeeds());
+        gui.showQuestion();
+        Integer position = currentPlayerSeed.equals(firstPlayer.getPlayerSeed()) ? firstPlayer.getMove() : secondPlayer.getMove();
+        if (position >= 0 && position <= 8) game.updateGameState(position);
+        else gui.showError("Bad input");
     }
 
     private void setPlayerVsPlayerPlayers() {

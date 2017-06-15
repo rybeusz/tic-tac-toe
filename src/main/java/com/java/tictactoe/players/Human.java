@@ -1,7 +1,6 @@
 package com.java.tictactoe.players;
 
 import com.java.tictactoe.enums.Seed;
-import com.java.tictactoe.interfaces.Player;
 import com.java.tictactoe.ui.UserInput;
 
 /**
@@ -18,8 +17,7 @@ public class Human implements Player {
 
     @Override
     public Integer getMove() {
-        Integer playerMove = userInput.chooseOption();
-        return playerMove;
+        return userInput.chooseOption();
     }
 
     @Override

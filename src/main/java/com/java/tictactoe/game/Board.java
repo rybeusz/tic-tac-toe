@@ -1,14 +1,14 @@
-package com.java.tictactoe.facade.model;
+package com.java.tictactoe.game;
 
 import com.java.tictactoe.enums.Seed;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by rybeusz on 12.06.17.
  */
 public class Board {
-
     private Cell[] cells;
 
     public Board() {
@@ -22,11 +22,7 @@ public class Board {
         }
     }
 
-    public Cell[] getCells() {
-        return cells;
-    }
-
-    public boolean isDraw() {
+    boolean isDraw() {
         for (Cell cell : getCells()) {
             if (cell.getContent().equals(Seed.EMPTY)) {
                 return false;
@@ -35,7 +31,7 @@ public class Board {
         return true;
     }
 
-    public boolean hasWon(Seed seed, Integer position) throws IllegalArgumentException {
+    boolean hasWon(Seed seed, Integer position) throws IllegalArgumentException {
         getCells()[position].setContent(seed);
 
         //get list with all players cells
@@ -58,11 +54,15 @@ public class Board {
         return false;
     }
 
-    public ArrayList<Seed> getSeeds() {
-        ArrayList<Seed> seeds = new ArrayList<>();
+    List<Seed> getBoardSeeds() {
+        List<Seed> seeds = new ArrayList<>();
         for (Cell cell : getCells()) {
-            seeds.add(cell.getSeed());
+            seeds.add(cell.getContent());
         }
         return seeds;
+    }
+
+    public Cell[] getCells() {
+        return cells;
     }
 }

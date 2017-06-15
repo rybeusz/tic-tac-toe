@@ -1,4 +1,4 @@
-package com.java.tictactoe.game.model;
+package com.java.tictactoe.game;
 
 import com.java.tictactoe.enums.Seed;
 import com.java.tictactoe.game.Board;
@@ -21,16 +21,18 @@ class BoardTest {
     }
 
     @Test
-    public void testBoardCreatesBoardWith3Rows() {
+    public void testBoardCreates9BoardLength() {
         assertEquals(9, board.getCells().length);
     }
 
 
     @Test
     public void testInitFillsCellsWithCorrectCoordinates() {
-        Cell cell = new Cell(8, 6);
+        int positionToCheck = 8;
+        int value = 6;
+        Cell cell = new Cell(positionToCheck, value);
         board.init();
-        assertTrue(cell.equals(board.getCells()[8]));
+        assertTrue(cell.equals(board.getCells()[positionToCheck]));
     }
 
     @Test
