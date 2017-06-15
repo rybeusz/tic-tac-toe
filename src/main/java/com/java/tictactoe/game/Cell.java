@@ -11,10 +11,15 @@ public class Cell {
     Integer value;
 
 
+    public Integer getPosition() {
+        return position;
+    }
+
     public Cell(Integer position, Integer value) {
         content = Seed.EMPTY;
         setPosition(position);
         setValue(value);
+
     }
 
     public Seed getSeed() {

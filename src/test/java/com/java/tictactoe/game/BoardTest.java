@@ -1,6 +1,8 @@
-package com.java.tictactoe.facade.model;
+package com.java.tictactoe.game.model;
 
 import com.java.tictactoe.enums.Seed;
+import com.java.tictactoe.game.Board;
+import com.java.tictactoe.game.Cell;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

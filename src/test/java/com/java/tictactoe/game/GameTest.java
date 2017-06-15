@@ -1,6 +1,6 @@
-package com.java.tictactoe.facade.facade;
+package com.java.tictactoe.game.facade;
 
-import com.java.tictactoe.facade.Game;
+import com.java.tictactoe.game.Game;
 import com.java.tictactoe.enums.GameState;
 import com.java.tictactoe.enums.Seed;
 import org.junit.jupiter.api.BeforeEach;
